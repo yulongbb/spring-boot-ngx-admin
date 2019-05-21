@@ -34,15 +34,16 @@ import { LogoutComponent } from './logout/logout.component';
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: 'http://localhost:8080',
+          baseEndpoint: 'http://localhost:8080/api/v1',
           login: {
-            endpoint: '/api/signin',
+            endpoint: '/users/signin',
           },
           register: {
-            endpoint: '/api/signup',
+            endpoint: '/users/signup',
           },
           token: {
             class: NbAuthJWTToken,
+            key: 'token',
           },
         }),
       ],

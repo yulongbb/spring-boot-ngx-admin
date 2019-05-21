@@ -26,7 +26,6 @@ export class LoginComponent extends NbLoginComponent implements OnInit {
       this.submitted = false;
       if (result.isSuccess()) {
         this.messages = ['登录成功！即将进入系统'];
-        localStorage.setItem('currentUser', this.user.username);
       } else {
         this.errors = ['用户名或密码有误'];
       }

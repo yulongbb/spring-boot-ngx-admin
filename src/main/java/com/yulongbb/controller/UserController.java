@@ -20,7 +20,7 @@ import com.yulongbb.service.UserService;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/users")
 @Api(tags = "api")
 @CrossOrigin("*")
 public class UserController {
