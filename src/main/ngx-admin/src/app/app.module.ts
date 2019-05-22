@@ -15,6 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxAuthModule } from './auth/auth.module';
+import { NbAuthModule, NbAuthJWTToken, NbPasswordAuthStrategy } from '@nebular/auth';
+import { PagesModule } from './pages/pages.module';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,17 +26,34 @@ import { NgxAuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
     NgxAuthModule,
-
-
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+          baseEndpoint: '/api/v1',
+          login: {
+            endpoint: '/users/signin',
+          },
+          register: {
+            endpoint: '/users/signup',
+          },
+          token: {
+            class: NbAuthJWTToken,
+            key: 'data.token',
+          },
+        }),
+      ],
+      forms: {},
+    }),
   ],
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    AuthGuard,
   ],
 })
 export class AppModule {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MENU_ITEMS } from './pages-menu';
+import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 
 @Component({
   selector: 'ngx-pages',

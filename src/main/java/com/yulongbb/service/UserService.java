@@ -41,12 +41,12 @@ public class UserService {
       token.put("token", jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRoles()));
       data.put("data", token);
       return data;
-    } catch (AuthenticationException e) {
+    } catch (Exception e) {
       throw new CustomException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
     }
   }
 
-  public Map<String, Map<String, String>>  signup(User user) {
+  public Map<String, Map<String, String>>  signup(User user){
     System.out.println(user.toString());
     if (!userRepository.existsByUsername(user.getUsername())) {
       user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -77,7 +77,7 @@ public class UserService {
     return userRepository.findByUsername(jwtTokenProvider.getUsername(jwtTokenProvider.resolveToken(req)));
   }
 
-  public String refresh(String username) {
+  public String refresh(String username){
     return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRoles());
   }
 

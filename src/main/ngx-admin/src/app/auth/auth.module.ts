@@ -9,7 +9,7 @@ import {
   NbAlertModule,
   NbButtonModule,
   NbCheckboxModule,
-  NbInputModule
+  NbInputModule,
 } from '@nebular/theme';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -29,29 +29,7 @@ import { LogoutComponent } from './logout/logout.component';
     NbButtonModule,
     NbCheckboxModule,
     NgxAuthRoutingModule,
-
-    NbAuthModule.forRoot({
-      strategies: [
-        NbPasswordAuthStrategy.setup({
-          name: 'email',
-          baseEndpoint: 'http://localhost:8080/api/v1',
-          login: {
-            endpoint: '/users/signin',
-          },
-          register: {
-            endpoint: '/users/signup',
-          },
-          token: {
-            class: NbAuthJWTToken,
-            key: 'token',
-          },
-        }),
-      ],
-      forms: {},
-    }),
-
     ThemeModule.forRoot(),
-
   ],
   declarations: [
     AuthComponent,

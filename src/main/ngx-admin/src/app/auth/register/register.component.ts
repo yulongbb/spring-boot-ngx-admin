@@ -22,7 +22,7 @@ export class RegisterComponent extends NbRegisterComponent {
       const redirect = result.getRedirect();
       if (redirect) {
         setTimeout(() => {
-          return this.router.navigateByUrl('auth/login');
+          return this.router.navigateByUrl('pages/dashboard');
         }, this.redirectDelay);
       }
       this.cd.detectChanges();
