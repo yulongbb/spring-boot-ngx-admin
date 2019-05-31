@@ -7,6 +7,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
+   {
+    title: 'Users',
+    icon: 'nb-person',
+    link: '/pages/user',
+  },
   // {
   //   title: 'FEATURES',
   //   group: true,

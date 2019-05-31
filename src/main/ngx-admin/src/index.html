@@ -10,7 +10,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
-<body onbeforeunload="doUnload()">
+<body onbeforeunload="ConfirmClose(event)">
   <ngx-app>Loading...</ngx-app>
 
   <style>
@@ -100,26 +100,6 @@
     <div class="blob blob-4"></div>
     <div class="blob blob-5"></div>
   </div>
-
-  <script>
-    var url = "http://www.google.com";
-    function doUnload() {
-      window.alert("dounload");
-      if (window.onclose) {
-        window.open(url, "", "height=550,width=750,scrollbars=yes,resizable=yes");
-      }
-    }
-    // window.addEventListener("unload", function (event) {
-    //   document.addEventListener("keydown", event => {
-    //     console.log(event.keyCode);
-    //     if (event.keyCode != 123) {
-    //       localStorage.removeItem('auth_app_token');
-    //     }
-    //     // do something
-    //   });
-    // });
-  </script>
-
 </body>
 
 </html>

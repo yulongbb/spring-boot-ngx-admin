@@ -32,7 +32,12 @@ export class LoginComponent extends NbLoginComponent implements OnInit {
       const redirect = result.getRedirect();
       if (redirect) {
         setTimeout(() => {
-          return this.router.navigateByUrl('pages/dashboard');
+          const user = result.getToken().getPayload();
+          if (user.auth[0].authority === 'ROLE_ADMIN') {
+            return this.router.navigateByUrl('pages/dashboard');
+          } else if (user.auth[0].authority === 'ROLE_CLIENT') {
+            return this.router.navigateByUrl('frontend/dashboard');
+          }
         }, this.redirectDelay);
       }
       this.cd.detectChanges();

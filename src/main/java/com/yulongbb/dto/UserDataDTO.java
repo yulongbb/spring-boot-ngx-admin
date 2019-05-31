@@ -2,35 +2,48 @@ package  com.yulongbb.dto;
 
 import java.util.List;
 
+import com.yulongbb.model.Address;
 import io.swagger.annotations.ApiModelProperty;
 import com.yulongbb.model.Role;
 
 public class UserDataDTO {
-  
+
   @ApiModelProperty(position = 0)
-  private String username;
+  private Integer id;
   @ApiModelProperty(position = 1)
-  private String email;
+  private String userName;
   @ApiModelProperty(position = 2)
   private String password;
-
   @ApiModelProperty(position = 3)
+  private String email;
+  @ApiModelProperty(position = 4)
   List<Role> roles;
+  @ApiModelProperty(position = 5)
+  private String firstName;
 
-  public String getUsername() {
-    return username;
+  @ApiModelProperty(position = 6)
+  private String lastName;
+
+  @ApiModelProperty(position = 7)
+  private String age;
+
+  @ApiModelProperty(position = 8)
+  private Address address;
+
+  public Integer getId() {
+    return id;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public String getEmail() {
-    return email;
+  public String getUserName() {
+    return userName;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
   public String getPassword() {
@@ -41,12 +54,52 @@ public class UserDataDTO {
     this.password = password;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
   public List<Role> getRoles() {
     return roles;
   }
 
   public void setRoles(List<Role> roles) {
     this.roles = roles;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public String getAge() {
+    return age;
+  }
+
+  public void setAge(String age) {
+    this.age = age;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
   }
 
 }

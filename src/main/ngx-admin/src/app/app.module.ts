@@ -14,10 +14,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxAuthModule } from './auth/auth.module';
 import { NbAuthModule, NbAuthJWTToken, NbPasswordAuthStrategy } from '@nebular/auth';
 import { PagesModule } from './pages/pages.module';
 import { AuthGuard } from './auth-guard.service';
+import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
+import { myRxStompConfig } from './my-rx-stomp.config';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +28,7 @@ import { AuthGuard } from './auth-guard.service';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxAuthModule,
+    NbAuthModule,
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),

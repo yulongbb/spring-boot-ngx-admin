@@ -11,6 +11,7 @@ import {
 
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
+  { path: 'frontend', loadChildren: 'app/frontend/frontend.module#FrontendModule' },
   { path: 'auth', loadChildren: 'app/auth/auth.module#NgxAuthModule' },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },

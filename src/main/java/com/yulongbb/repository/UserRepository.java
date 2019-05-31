@@ -8,11 +8,11 @@ import com.yulongbb.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-  boolean existsByUsername(String username);
+  boolean existsByUserName(String username);
 
-  User findByUsername(String username);
+  User findByUserName(String username);
 
   @Transactional
-  void deleteByUsername(String username);
+  void deleteByUserName(String username);
 
 }

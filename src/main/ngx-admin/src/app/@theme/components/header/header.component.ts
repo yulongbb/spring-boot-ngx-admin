@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{ title: 'Profile', link: '/pages/profile' }, { title: 'Log out', link: '/auth/logout' }];
+  userMenu;
 
   constructor(private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
@@ -26,6 +26,11 @@ export class HeaderComponent implements OnInit {
     this.authService.onTokenChange()
       .subscribe((token: NbAuthJWTToken) => {
         this.user = token.getPayload(); // here we receive a payload from the token and assigne it to our `user` variable
+        if (this.user.auth[0].authority === 'ROLE_ADMIN') {
+          this.userMenu = [{ title: 'Profile', link: '/pages/profile' }, { title: 'Log out', link: '/auth/logout' }];
+        } else {
+          this.userMenu = [{ title: 'Profile', link: '/frontend/profile' }, { title: 'Log out', link: '/auth/logout' }];
+        }
       });
   }
 

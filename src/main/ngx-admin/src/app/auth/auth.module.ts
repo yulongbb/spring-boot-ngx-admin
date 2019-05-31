@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NgxAuthRoutingModule } from './auth-routing.module';
-import { NbAuthModule, NbPasswordAuthStrategy, NbAuthJWTToken } from '@nebular/auth';
+import { NbAuthModule, NbPasswordAuthStrategy, NbAuthJWTToken, NbAuthBlockComponent, NbAuthComponent } from '@nebular/auth';
 import {
   NbAlertModule,
   NbButtonModule,
@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RequestPasswordComponent } from './request-password/request-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { AuthComponent } from './auth.component';
+import { NgxAuthComponent } from './auth.component';
 import { ThemeModule } from '../@theme/theme.module';
 import { LogoutComponent } from './logout/logout.component';
 
@@ -32,12 +32,12 @@ import { LogoutComponent } from './logout/logout.component';
     ThemeModule.forRoot(),
   ],
   declarations: [
-    AuthComponent,
     LoginComponent,
     RegisterComponent,
     RequestPasswordComponent,
     ResetPasswordComponent,
     LogoutComponent,
+    NgxAuthComponent,
   ],
 })
 export class NgxAuthModule {

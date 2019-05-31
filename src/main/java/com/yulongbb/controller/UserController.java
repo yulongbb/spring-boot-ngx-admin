@@ -17,6 +17,7 @@ import com.yulongbb.dto.UserResponseDTO;
 import com.yulongbb.model.User;
 import com.yulongbb.service.UserService;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -37,9 +38,8 @@ public class UserController {
       @ApiResponse(code = 400, message = "Something went wrong"), //
       @ApiResponse(code = 422, message = "Invalid username/password supplied")})
   public Map<String, Map<String, String>> login(@RequestBody User user) {
-    System.out.println(user.getUsername());
-    System.out.println(user.getPassword());
-    return userService.signin(user.getUsername(), user.getPassword());
+    System.out.println(user.getUserName());
+    return userService.signin(user.getUserName(), user.getPassword());
   }
 
   @PostMapping("/signup")
@@ -51,6 +51,18 @@ public class UserController {
       @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
   public Map<String, Map<String, String>> signup(@ApiParam("Signup User") @RequestBody UserDataDTO user) {
     return userService.signup(modelMapper.map(user, User.class));
+  }
+
+
+  @PostMapping("/save")
+  @ApiOperation(value = "${UserController.signup}")
+  @ApiResponses(value = {//
+          @ApiResponse(code = 400, message = "Something went wrong"), //
+          @ApiResponse(code = 403, message = "Access denied"), //
+          @ApiResponse(code = 422, message = "Username is already in use"), //
+          @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
+  public User save(@ApiParam("Signup User") @RequestBody UserDataDTO user) {
+    return userService.save(modelMapper.map(user, User.class));
   }
 
   @DeleteMapping(value = "/{username}")
@@ -76,6 +88,18 @@ public class UserController {
       @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
   public UserResponseDTO search(@ApiParam("Username") @PathVariable String username) {
     return modelMapper.map(userService.search(username), UserResponseDTO.class);
+  }
+
+  @GetMapping(value = "")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @ApiOperation(value = "${UserController.search}", response = UserResponseDTO.class)
+  @ApiResponses(value = {//
+          @ApiResponse(code = 400, message = "Something went wrong"), //
+          @ApiResponse(code = 403, message = "Access denied"), //
+          @ApiResponse(code = 404, message = "The user doesn't exist"), //
+          @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
+  public List<User> users() {
+    return userService.users();
   }
 
   @GetMapping(value = "/me")

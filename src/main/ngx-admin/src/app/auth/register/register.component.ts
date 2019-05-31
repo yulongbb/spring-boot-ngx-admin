@@ -11,8 +11,9 @@ export class RegisterComponent extends NbRegisterComponent {
     this.errors = [];
     this.messages = [];
     this.submitted = true;
-    this.user.roles = ['ROLE_ADMIN'];
+    this.user.roles = ['ROLE_CLIENT'];
     this.service.register(this.strategy, this.user).subscribe((result: NbAuthResult) => {
+      const user = result.getToken().getPayload();
       this.submitted = false;
       if (result.isSuccess()) {
         this.messages = ['注册成功！即将进入系统'];
@@ -22,7 +23,11 @@ export class RegisterComponent extends NbRegisterComponent {
       const redirect = result.getRedirect();
       if (redirect) {
         setTimeout(() => {
-          return this.router.navigateByUrl('pages/dashboard');
+          if (user.auth[0].authority === 'ROLE_ADMIN') {
+            return this.router.navigateByUrl('pages/dashboard');
+          } else if (user.auth[0].authority === 'ROLE_CLIENT') {
+            return this.router.navigateByUrl('frontend/dashboard');
+          }
         }, this.redirectDelay);
       }
       this.cd.detectChanges();

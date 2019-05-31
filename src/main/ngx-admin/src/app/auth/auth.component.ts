@@ -9,6 +9,6 @@ import { NbAuthComponent } from '@nebular/auth';
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent extends NbAuthComponent {
+export class NgxAuthComponent extends NbAuthComponent {
 
 }

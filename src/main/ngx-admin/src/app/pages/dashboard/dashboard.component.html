@@ -1,5 +1,11 @@
 <div class="row">
-  <nb-card>
-    <nb-card-body>Hello from ngx-admin sandbox project.</nb-card-body>
-  </nb-card>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <ngx-dashboard-summary [summary]="summary"></ngx-dashboard-summary>
+        <angular-cropper #angularCropper [cropperOptions]="config" [imageUrl]="imageUrl"></angular-cropper>
+        <img [src]="imgUrl"/>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>

@@ -2,7 +2,7 @@
      [class.left]="position === 'normal'"
      [class.right]="position === 'inverse'">
   <div class="logo-containter">
-    <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
+    <a *ngIf="user.auth[0].authority === 'ROLE_ADMIN'" (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
     <div class="logo" (click)="goToHome()">ngx-<span>admin</span></div>
   </div>
   <ngx-theme-switcher></ngx-theme-switcher>

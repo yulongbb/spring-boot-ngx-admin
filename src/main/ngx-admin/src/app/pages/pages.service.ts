@@ -26,4 +26,14 @@ export class PageService {
         const url = `/api/v1/users/${username}`;
         return this.http.get<any>(url, this.httpOptions);
     }
+
+    getUsers(): Observable<any[]> {
+        const url = `/api/v1/users`;
+        return this.http.get<any[]>(url, this.httpOptions);
+    }
+
+    saveUser(user): Observable<any[]> {
+        const url = `/api/v1/users/save`;
+        return this.http.post<any[]>(url, user, this.httpOptions);
+    }
 }

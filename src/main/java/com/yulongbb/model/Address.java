@@ -1,15 +1,40 @@
 package com.yulongbb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
 /**
  * Created by Jeremy on 2019/5/28.
  */
+@Entity
 public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
 
     private String street;
 
     private String city;
 
     private String zipCode;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "address")
+    private User user;
+
+    public Address() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getStreet() {
         return street;
@@ -33,5 +58,13 @@ public class Address {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

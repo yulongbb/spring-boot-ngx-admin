@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
   selector: 'ngx-app',
   template: '<router-outlet></router-outlet>',
 })
-export class AppComponent implements OnInit {
-
+export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private analytics: AnalyticsService, private router: Router) {
   }
@@ -23,4 +22,11 @@ export class AppComponent implements OnInit {
     }
     this.analytics.trackPageViews();
   }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('auth_app_token');
+  }
+
+
+
 }

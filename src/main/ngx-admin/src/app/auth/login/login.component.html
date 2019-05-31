@@ -18,21 +18,21 @@
 <form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">
 
   <div class="form-control-group">
-    <label class="label" for="input-username">Email address:</label>
+    <label class="label" for="input-userName">userName address:</label>
     <input nbInput
            fullWidth
-           [(ngModel)]="user.username"
-           #email="ngModel"
-           name="username"
-           id="input-username"
+           [(ngModel)]="user.userName"
+           #userName="ngModel"
+           name="userName"
+           id="input-userName"
            placeholder="Username"
            autofocus
-           [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
-           [required]="getConfigValue('forms.validation.email.required')"
-           [attr.aria-invalid]="email.invalid && email.touched ? true : null">
-    <ng-container *ngIf="email.invalid && email.touched">
-      <p class="error-message" *ngIf="email.errors?.required">
-        Email is required!
+           [status]="userName.dirty ? (userName.invalid  ? 'danger' : 'success') : ''"
+           [required]="getConfigValue('forms.validation.userName.required')"
+           [attr.aria-invalid]="userName.invalid && userName.touched ? true : null">
+    <ng-container *ngIf="userName.invalid && userName.touched">
+      <p class="error-message" *ngIf="userName.errors?.required">
+        userName is required!
       </p>
     </ng-container>
   </div>

@@ -21,6 +21,12 @@ spring:
        hibernate:
          dialect : org.hibernate.dialect.MySQL5InnoDBDialect
 
+  rabbitmq:
+    host: 192.168.101.9
+    port: 5672
+    username: guest
+    password: guest
+
 
 security:
   jwt:
