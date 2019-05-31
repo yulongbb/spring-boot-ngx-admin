@@ -36,4 +36,9 @@ export class PageService {
         const url = `/api/v1/users/save`;
         return this.http.post<any[]>(url, user, this.httpOptions);
     }
+
+    getArticles(): Observable<any[]> {
+        const url = `/api/v1/articles`;
+        return this.http.get<any[]>(url, this.httpOptions);
+    }
 }

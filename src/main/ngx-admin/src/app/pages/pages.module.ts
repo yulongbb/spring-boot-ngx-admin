@@ -11,6 +11,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ProfileComponent } from './profile/profile.component';
 import { PageService } from './pages.service';
 import { UserComponent } from './user/user.component';
+import { ArticleComponent } from './article/article.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -31,6 +32,7 @@ const PAGES_COMPONENTS = [
     ...PAGES_COMPONENTS,
     ProfileComponent,
     UserComponent,
+    ArticleComponent,
   ],
   providers: [
     PageService,
