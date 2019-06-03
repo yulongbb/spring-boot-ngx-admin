@@ -3,7 +3,7 @@
     Smart Table
   </nb-card-header>
   <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="userSelectRows($event.selected)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card> 

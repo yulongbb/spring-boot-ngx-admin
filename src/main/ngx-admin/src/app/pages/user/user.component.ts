@@ -10,6 +10,7 @@ import { PageService } from '../pages.service';
 export class UserComponent implements OnInit {
 
   settings = {
+    selectMode: 'multi',
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -60,6 +61,9 @@ export class UserComponent implements OnInit {
     this.pageService.getUsers().subscribe(response => {
       this.source.load(response);
     });
+  }
+
+  userSelectRows(selectedList) {
   }
 
   onDeleteConfirm(event): void {
